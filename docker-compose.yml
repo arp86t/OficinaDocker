@@ -1,14 +1,18 @@
 version: '2'
 
 volumes:
-  aula2-logs:
-    external: true
+  app_data:
+  redis_data:
 
 services:
-  aula2:
-    image: oficina-docker:aula2-volumes
+  app:
+    image: oficina-docker:aula3-network
     build: .
-    container_name: aula-2
+    container_name: aula-3
     volumes: 
-      - aula2-logs:/tmp
-    restart: always
+     - app_data:/tmp
+
+  redis:
+    image: redis:alpine
+    volumes:
+     - redis_data:/data
