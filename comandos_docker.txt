@@ -1,0 +1,91 @@
+### Criação de imagem
+docker build -t <SERVIÇO>:<SO> <LOCAL DO DOCKERFILE>
+	Ex: docker build -t stress:fedora .
+
+### Lista os containers em execução
+docker ps
+
+### Lista os containers, mesmo os que não estão em execução
+docker ps -a
+
+### Remove determinada image
+docker rmi <ID>history
+	Ex: docker rmi a1fe79326a57
+
+### Lista as imagens que foram criadas
+docker images
+
+### Lista, resumidamente, os containers que foram criados com seus status e porta
+docker-compose ps
+
+### Verifica se existe alguma inconsistência no arquivo .yml do docker-compose
+docker-compose -f <NOME .YML DO DOCKER-COMPOSE> config
+	Ex: docker-compose -f docker-compose.yml config
+
+### Exibe os passos que foram executados na criação do container via docker-compose
+docker-compose logs <CONTAINER NAME>
+	Ex: docker-compose logs app
+
+### Cria containers, volumes, etc através do arquivo docker-compose.yml
+docker-compose up -d
+
+### Para e remove containers, rede, images e volumes
+docker-compose down
+
+### Recria os containers recriando a imagem
+docker-compose up -d --build
+
+### Executar comando dentro de container
+docker-compose exec <CONTAINER NAME> <COMANDO>
+docker exec -it <CONTAINER NAME> <COMANDO>
+docker exec -it -u <USUARIO> <CONTAINER NAME> <COMANDO>
+	Ex: docker exec -it -u root aula-3 bash
+
+### Iniciar/Parar container
+docker start <CONTAINER NAME>
+docker stop <CONTAINER NAME>
+docker restart <CONTAINER NAME>
+	Ex: docker stop app
+
+### Remover os container parados, build cache, imagens "com erro", redes não usadas
+docker system prune
+
+### Exibe informações detalhadas do container (rede, volume, etc)
+docker inspect <CONTAINER NAME>
+	Ex: docker inspect aula-3
+
+### Listas os volumes existentes criados
+docker volume ls
+
+### Listas os volumes existentes criados
+docker volume inspect <NOME DO VOLUME>
+	Ex: docker volume inspect lab
+
+### Criar volume
+docker volume create <NOME DO VOLUME>
+	Ex: docker volume create aula2-logs
+
+### Exibir informações de utilização de disco dos container, imagens, cache e volumes
+docker system df
+
+### Lista as informações de SO, RAM, Disco, Rede, Total de Containers, etc.
+docker info
+
+### Executar comando em um novo container
+docker run -d --name <NOME DO CONTAINER> <NOME DA IMAGEM>
+	Ex: docker run -d --name postgres-principal postgres:alpine
+
+### Remover um ou mais containers
+docker rm -f <NOME DO CONTAINER>
+	Ex: docker rm -f postgres-principal
+
+### Exibe o histórico de uma imagem
+docker history <NOME DA IMAGEM>
+	Ex: docker history postgres:alpine
+
+### Visualizar uso de recursos do docker
+docker stats
+docker stats <CONTAINER NAME>
+	.Ex: docker stats logs_fluentd_1
+
+
